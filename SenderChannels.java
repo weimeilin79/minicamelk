@@ -5,7 +5,7 @@ import org.apache.camel.component.jackson.JacksonDataFormat;
 
 public class SenderChannels extends RouteBuilder {
 
-  private static final String STREAMS_URL = "my-cluster-kafka-bootstrap.streams.svc:9092";
+  private static final String STREAMS_URL = "my-cluster-kafka-bootstrap.usecase.svc:9092";
   
   
   @Override

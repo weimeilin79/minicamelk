@@ -7,8 +7,8 @@ import org.apache.camel.builder.RouteBuilder;
 
 public class ReceiverMQTT extends RouteBuilder {
 
-  private static final String STREAMS_URL = "my-cluster-kafka-bootstrap.streams.svc:9092";
-  private static final String BROKER_URL = "tcp://broker-amq-mqtt.demo.svc:1883";
+  private static final String STREAMS_URL = "my-cluster-kafka-bootstrap.usecase.svc:9092";
+  private static final String BROKER_URL = "tcp://broker-amq-mqtt.usecase.svc:1883";
   @Override
   public void configure() throws Exception {
     

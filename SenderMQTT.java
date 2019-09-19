@@ -16,7 +16,7 @@ public class SenderMQTT extends RouteBuilder {
     from("timer:tick?fixedRate=true&period=2000")
       .setBody(method(this, "genRandoSingalInput()"))
       .marshal(jacksonDataFormat)
-      .to("mqtt:singal?host=tcp://broker-amq-mqtt.demo.svc:1883&userName=amq&password=password&publishTopicName=mytopic");
+      .to("mqtt:singal?host=tcp://broker-amq-mqtt.usecase.svc:1883&userName=amq&password=password&publishTopicName=mytopic");
   }
 
   public static SingalInput genRandoSingalInput(){
@@ -25,8 +25,10 @@ public class SenderMQTT extends RouteBuilder {
       input.setValue((int)(Math.random()*600));
 
       int ranvalue = (int)(Math.random()*6);
-      if(ranvalue > 3){ input .setType("HR");}
-      //else{input .setType("BP");}
+      if(ranvalue > 3){ 
+        input .setType("HR");
+      }
+      else{input .setType("BP");}
       return input;
   }
 
