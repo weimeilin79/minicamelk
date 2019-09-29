@@ -1,0 +1,4 @@
+- from:
+    uri: "knative:channel/heartrate"
+    steps:
+      - log: "--> HR ${body}"

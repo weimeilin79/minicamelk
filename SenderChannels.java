@@ -15,17 +15,22 @@ public class SenderChannels extends RouteBuilder {
     jacksonDataFormat.setUnmarshalType(SingalInput.class);
     
     from("kafka:my-topic?brokers="+STREAMS_URL)
+    .throttle(1)
     .unmarshal(jacksonDataFormat)
     .choice()
       .when().simple("${body.type} == 'BP'")
           .marshal(jacksonDataFormat)
           .log("BP - ${body}")
           .to("knative:channel/bloodpressure")
+      .when().simple("${body.type} == 'BT'")
+          .marshal(jacksonDataFormat)
+          .log("BT - ${body}")
+          .to("knative:channel/bodytemperature")
       .otherwise()
-      .marshal(jacksonDataFormat)
+          .marshal(jacksonDataFormat)
           .log("HR - ${body}")
           .to("knative:channel/heartrate")
-          ;
+        ;
 
   }
 

@@ -22,13 +22,16 @@ public class SenderMQTT extends RouteBuilder {
   public static SingalInput genRandoSingalInput(){
 
       SingalInput input = new SingalInput();
-      input.setValue((int)(Math.random()*600));
+      int ranvalue = (int)(Math.random()*9)%3;
 
-      int ranvalue = (int)(Math.random()*6);
-      if(ranvalue > 3){ 
+      input.setValue((int)(Math.random()*600));
+       if(ranvalue == 0)
         input .setType("HR");
-      }
-      else{input .setType("BP");}
+       if (ranvalue == 1)
+        input.setType("BT");
+      else
+        input.setType("BP");
+
       return input;
   }
 

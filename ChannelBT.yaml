@@ -1,0 +1,15 @@
+apiVersion: sources.eventing.knative.dev/v1alpha1
+kind: CamelSource
+metadata:
+  name: bodytemperature-source
+spec:
+  source:
+    integration:
+      sources:
+      - name: bt.groovy
+        content:
+          from('knative:channel/bodytemperature').log('--> BP ${body}')
+  sink:
+    apiVersion: eventing.knative.dev/v1alpha1
+    kind: Channel
+    name: bodytemperature

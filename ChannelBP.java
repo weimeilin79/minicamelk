@@ -1,6 +1,6 @@
 import org.apache.camel.builder.RouteBuilder;
 
-//kamel run ChannelBP.java --dev
+//kamel run ChannelBP.java --dev 
 
 public class ChannelBP extends RouteBuilder {
 
